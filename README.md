@@ -1,4 +1,4 @@
 # Resume
 
-See the pdf [here](./resume.pdf)
+See the pdf [here](./resume.pdf).
 
