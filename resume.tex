@@ -3,7 +3,7 @@
 
 \documentclass{resume}
 
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+\usepackage[left=0.75in,top=0.5in,right=0.75in,bottom=0.6in]{geometry} % Document margins
 \usepackage{hyperref}
 \usepackage{fontawesome5}
 \usepackage{graphicx}
@@ -15,7 +15,7 @@
 \name{Wyatt Avilla}
 \address{(408)506-2189}
 \address{\href{mailto:wyattmurphy1@gmail.com}{wyattmurphy1@gmail.com}}
-\address{\href{https://github.com/wyatt-avilla}{github.com/wyatt-avilla \scaledfaExternalLink} }
+\address{\href{https://github.com/wyatt-avilla}{github.com/wyatt-avilla \scaledfaExternalLink}}
 
 \begin{document}
 
@@ -24,6 +24,11 @@
 	\textbf{University of California, Santa Cruz} \hfill \textit{September 2021 - Present} \\
 	\textit{Major:} B.S. Cognitive Science, specializing in AI \& HCI \hfill \textbf{CGPA: 3.9}\\
 	\textit{Minor:} Computer Science
+
+	\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} p{0.7\textwidth} }
+		Relevant Courses & Data Structures \& Algorithms, Object Oriented Programming, \newline
+		Parallel Programming, Computer System Design, Artificial Intelligence                   \\
+	\end{tabular}
 
 \end{rSection}
 
@@ -38,35 +43,32 @@
 
 \begin{rSection}{Work Experience}
 
-	\begin{rSubsection}{Data Structures \& Algorithms Tutor}{July 2024 - September 2024}{University of California, Santa Cruz}{}
-		\item Assisted students in understanding core concepts of data structures and algorithms.
-		\item Led and conducted group sessions to facilitate collaborative learning and peer discussions.
-		\item Developed supplemental materials to enhance students' learning experiences.
-		\item Helped students prepare for exams by reviewing key topics and solving practice problems.
+	\begin{rSubsection}{Python Developer Intern}{September 2024 - December 2024}{Lillup}{}
+		\item Developed a custom parser for an internal markup language, emphasizing type safety and maintainability through static typing with Mypy
+		\item Architected and implemented a fully typed API using the LangChain framework, incorporating comprehensive testing and CI/CD pipelines through GitHub Actions
+		\item Demonstrated project leadership through GitHub ecosystem utilization (Issues, Wiki, Actions), coordinating technical initiatives and maintaining high code quality standards
 	\end{rSubsection}
 
-\end{rSection}
-
-\begin{rSection}{Relevant Courses}
-	\itab{\textbf{Core Courses}} \tab{}  \tab{\textbf{Other Courses}}
-	\\ \itab{Data Structures \& Algorithms } \tab{}  \tab{Discrete Mathematics}
-	\\ \itab{Object Oriented Programming} \tab{}  \tab{Linear Algebra}
-	\\ \itab{Parallel Programming} \tab{}  \tab{Vector Calculus}
-	\\ \itab{Computer Systems} \tab{} \tab{}
+	\begin{rSubsection}{Data Structures \& Algorithms Tutor}{July 2024 - September 2024}{University of California, Santa Cruz}{}
+		\item Led group sessions and provided one-on-one assistance to students in data structures and algorithms concepts
+		\item Developed and curated supplemental learning materials, including exam preparation resources and practice problems
+	\end{rSubsection}
 
 \end{rSection}
 
 \begin{rSection}{Projects}
 
-	\item {\bf \href{https://github.com/search?q=repo%3Adoldecomp%2Fmelee++author%3Awyatt-avilla&type=pullrequests&ref=advsearch}{PowerPC Assembly Reverse Engineering \scaledfaExternalLink}} {\hfill March 2024} \\
-	Contributed to an open-source reverse engineering project for Super Smash Bros. Melee on the Nintendo GameCube. Focused on analyzing PowerPC assembly code and translating it into C. Actively collaborated with a team of developers to improve accuracy and functionality, contributing to a collective effort to document and recover the game's codebase.
+	\item {\bf \href{https://github.com/search?q=repo\%3Adoldecomp\%2Fmelee++author\%3Awyatt-avilla&type=pullrequests&ref=advsearch}{PowerPC Assembly Reverse Engineering \scaledfaExternalLink}} {\hfill March 2024} \\
+	Contributed to an open-source project to reverse-engineer \textit{Super Smash Bros. Melee}, working to translate PowerPC assembly into C. Collaborated with a team of developers to improve the codebase's accuracy, functionality, and documentation.
+
+	\item {\bf \href{https://github.com/wyatt-avilla/sunbird}{Neural Network Decompiler Pipeline \scaledfaExternalLink}} {\hfill September 2024} \\
+	Developed a pipeline to train neural networks for assembly decompilation by processing C code through multiple compilers and optimization levels. Utilized PyTorch for model training and Tree-sitter for efficient tokenization and vectorization.
 
 	\item {\bf \href{https://github.com/wyatt-avilla/feframe}{Rust-Based Website \scaledfaExternalLink}} {\hfill June 2024} \\
-	Developed a fully Rust-based website leveraging WebAssembly and Trunk for building, hosted on shuttle.rs. Utilized Rust's procedural macros to dynamically generate HTML and CSS, ensuring a strongly-typed, efficient development process without relying on traditional frontend languages.
+	Built a Rust-based website with WebAssembly, dynamically generating HTML/CSS using procedural macros, hosted on shuttle.rs.
 
 	\item {\bf \href{https://github.com/wyatt-avilla/discord-tiktok-tts-bot}{Discord Bot \scaledfaExternalLink}} {\hfill March 2023} \\
-	Developed a Discord bot utilizing the TikTok text-to-speech API to enable real-time text-to-speech requests within voice channels. The bot allows users to submit text messages which are then converted to speech and played back live during voice calls.
-
+	Developed a Discord bot integrating TikTok's text-to-speech API for real-time voice channel message conversion and playback.
 
 \end{rSection}
 
