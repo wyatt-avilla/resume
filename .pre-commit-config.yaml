@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check-fmt
+        name: Run tex-fmt
+        entry: bash -c 'tex-fmt --check **.tex'
+        language: system
+      - id: check-lint
+        name: Run Chktek
+        entry: bash -c 'chktex -n8 **.tex'
+        language: system
