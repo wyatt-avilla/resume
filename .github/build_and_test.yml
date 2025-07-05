@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nixbuild/nix-quick-install-action@v30
+      - name: Format
+        run: |
+          nix build .#checks.x86_64-linux.tex-fmt
+      - name: Format
+        run: |
+          nix build .#checks.x86_64-linux.chktek
+      - name: Build
+        run: |
+          nix build
