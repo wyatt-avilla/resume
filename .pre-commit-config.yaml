@@ -3,9 +3,9 @@ repos:
     hooks:
       - id: check-fmt
         name: Run tex-fmt
-        entry: bash -c 'tex-fmt --check **.tex'
+        entry: bash -c 'nix build .#checks.x86_64-linux.tex-fmt'
         language: system
       - id: check-lint
-        name: Run Chktek
-        entry: bash -c 'chktex -n8 **.tex'
+        name: Run Chktex
+        entry: bash -c 'nix build .#checks.x86_64-linux.chktex'
         language: system

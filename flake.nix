@@ -34,7 +34,7 @@
           '';
         };
 
-        packages.default = pkgs.stdenv.mkDerivation {
+        packages.default = pkgs.stdenv.mkDerivation rec {
           pname = "resume";
           version = "0.1.0";
           doCheck = true;
@@ -44,12 +44,10 @@
           buildInputs = with pkgs; [
             tex
             tex-fmt
-          ];
 
-          checkPhase = ''
-            tex-fmt --check **.tex
-            chktek **.tex
-          '';
+            self.checks.${system}.chktex
+            self.checks.${system}.tex-fmt
+          ];
 
           buildPhase = ''
             runHook preBuild
@@ -67,6 +65,44 @@
 
             runHook postInstall
           '';
+        };
+
+        checks = {
+          chktex = pkgs.stdenv.mkDerivation {
+            pname = "chktek-check";
+            version = "0.1.0";
+
+            src = ./.;
+
+            buildInputs = [ tex ];
+
+            buildPhase = ''
+              echo "Running chktek checks..."
+              ${pkgs.lib.getExe pkgs.texlivePackages.chktex} --nowarn 8 **.tex
+            '';
+
+            installPhase = ''
+              mkdir -p $out
+              echo "chktex checks passed" > $out/chktek-result
+            '';
+          };
+
+          tex-fmt = pkgs.stdenv.mkDerivation {
+            pname = "tex-fmt-check";
+            version = "0.1.0";
+
+            src = ./.;
+
+            buildPhase = ''
+              echo "Running tex-fmt checks..."
+              ${pkgs.lib.getExe pkgs.tex-fmt} --check **.tex
+            '';
+
+            installPhase = ''
+              mkdir -p $out
+              echo "tex-fmt checks passed" > $out/tex-fmt-result
+            '';
+          };
         };
       }
     );
