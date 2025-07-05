@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  Python:
+  LaTeX:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
           nix build .#checks.x86_64-linux.tex-fmt
       - name: Format
         run: |
-          nix build .#checks.x86_64-linux.chktek
+          nix build .#checks.x86_64-linux.chktex
       - name: Build
         run: |
           nix build
