@@ -34,7 +34,7 @@
           '';
         };
 
-        packages.default = pkgs.stdenv.mkDerivation rec {
+        packages.default = pkgs.stdenv.mkDerivation {
           pname = "resume";
           version = "0.1.0";
           doCheck = true;
@@ -69,7 +69,7 @@
 
         checks = {
           chktex = pkgs.stdenv.mkDerivation {
-            pname = "chktek-check";
+            pname = "chktex-check";
             version = "0.1.0";
 
             src = ./.;
