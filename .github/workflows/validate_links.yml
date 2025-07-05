@@ -1,0 +1,57 @@
+name: Validate Links
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  LaTeX:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - name: Install dependencies
+        run: pip install requests
+      - name: Validate Links
+        run: |
+          import http.client
+          import itertools
+          import pathlib
+          import re
+          import sys
+
+          import requests
+
+          LINK_REGEX = r"\\(?:href|url)\{(https?://[^\}]+\.[^\}]+)\}"
+          FILE_EXTENSIONS = [".tex"]
+          REQUEST_TIMEOUT = 10
+
+          if __name__ == "__main__":
+              query_files = filter(
+                  lambda path: any(path.name.endswith(ext) for ext in FILE_EXTENSIONS),
+                  pathlib.Path().iterdir(),
+              )
+
+              links = list(
+                  itertools.chain.from_iterable(
+                      re.findall(LINK_REGEX, f.read_text()) for f in query_files
+                  ),
+              )
+
+              responses = [
+                  (link, requests.get(link, timeout=REQUEST_TIMEOUT).status_code)
+                  for link in links
+              ]
+
+              ok = http.HTTPStatus.OK
+              print("Statuses:")
+              for link, status in responses:
+                  print(f"  {'✅' if status == ok else '❌'} {link}")
+
+              sys.exit(1 if any(status != ok for _, status in responses) else 0)
+
+        shell: python
