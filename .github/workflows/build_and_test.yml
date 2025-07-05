@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  actions: write
 
 jobs:
   LaTeX:
