@@ -78,7 +78,7 @@
 
             buildPhase = ''
               echo "Running chktek checks..."
-              ${pkgs.lib.getExe pkgs.texlivePackages.chktex} --nowarn 8 **.tex
+              ${pkgs.lib.getExe' pkgs.texlivePackages.chktex "chktex"} --nowarn 8 **.tex
             '';
 
             installPhase = ''
