@@ -43,3 +43,9 @@ jobs:
       - name: Build
         run: |
           nix build
+      - name: Ensure committed resume matched build output
+        run: |
+          if ! diff -q resume.pdf result/resume.pdf >/dev/null; then
+              echo "PDFs differ"
+              exit 1
+          fi
