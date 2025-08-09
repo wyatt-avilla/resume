@@ -47,8 +47,10 @@
 
   \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
     Programming Languages & Python C, Rust, C++, Shell, Nix, Lua, SQL   \\
-    Software \& Tools     & Git, Linux, GitHub Actions, Docker, NixOS, SQLite \\
-    Frameworks \& Libraries & Pandas, LangChain, asyncio, NumPy \\
+    Software \& Tools     & Git, Linux, GitHub Actions, Docker,
+    NixOS, SQLite, systemd \\
+    Frameworks \& Libraries & Pandas, LangChain, asyncio, NumPy,
+    Actix Web, Embassy \\
   \end{tabular}
 
 \end{rSection}
@@ -98,12 +100,15 @@
   with per-server configuration management and probabilistic
   autonomous responses. Exposed as a NixOS service and packaged with Nix flakes.
 
-\item{} {\bf{} \href{https://github.com/wyatt-avilla/sunbird}{Neural
-  Network Decompiler Pipeline \scaledfaExternalLink}} {\hfill{} Sept 2024} \\
-  Developed a pipeline to train neural networks for assembly
-  decompilation by processing C code through multiple compilers and
-  optimization levels. Utilized PyTorch for model training and
-  Tree-sitter for efficient tokenization and vectorization.
+\item{} {\bf{} \href{https://github.com/wyatt-avilla/hypha}{Type-Safe
+  REST API with ESP32 Client Integration \scaledfaExternalLink}}
+  {\hfill{} June 2025} \\
+  Built a production-ready REST API in Rust using Actix Web to
+  monitor systemd service statuses, with shared type definitions
+  ensuring compile-time safety between server and ESP32 client
+  firmware. Implemented asynchronous message-passing architecture
+  using Embassy for low-power consumption, packaged as a configurable
+  NixOS service with CLI interface for real-time system monitoring.
 
 \item{} {\bf{}
     \href{https://github.com/search?q=repo\%3Adoldecomp\%2Fmelee++author\%3Awyatt-avilla&type=pullrequests&ref=advsearch}{Open
