@@ -95,7 +95,7 @@
 
             buildPhase = ''
               echo "Running tex-fmt checks..."
-              ${pkgs.lib.getExe pkgs.tex-fmt} --check **.tex
+              ${pkgs.lib.getExe pkgs.tex-fmt} --check **.tex **.cls
             '';
 
             installPhase = ''
