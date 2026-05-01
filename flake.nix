@@ -19,7 +19,14 @@
 
         resumeFile = "resume.typ";
         outputFile = "resume.pdf";
-        typstFontPath = "${pkgs.tex-gyre.heros}/share/fonts/opentype";
+        typstFontPaths = [
+          "${pkgs.tex-gyre.heros}/share/fonts/opentype"
+          "${pkgs.nerd-fonts.symbols-only}/share/fonts/truetype/NerdFonts/Symbols"
+        ];
+        typstFontPathEnv = builtins.concatStringsSep ":" typstFontPaths;
+        typstFontPathArgs = builtins.concatStringsSep " " (
+          map (fontPath: "--font-path ${fontPath}") typstFontPaths
+        );
         typstFiles = [
           "resume.typ"
           "spacing.typ"
@@ -38,10 +45,11 @@
             tinymist
             pre-commit
             tex-gyre.heros
+            nerd-fonts.symbols-only
           ];
 
           shellHook = ''
-            export TYPST_FONT_PATHS="${typstFontPath}''${TYPST_FONT_PATHS:+:''${TYPST_FONT_PATHS}}"
+            export TYPST_FONT_PATHS="${typstFontPathEnv}''${TYPST_FONT_PATHS:+:''${TYPST_FONT_PATHS}}"
             pre-commit install
           '';
         };
@@ -56,6 +64,7 @@
           nativeBuildInputs = with pkgs; [
             typst
             tex-gyre.heros
+            nerd-fonts.symbols-only
           ];
 
           buildPhase = ''
@@ -63,7 +72,7 @@
 
             typst compile \
               --root . \
-              --font-path ${typstFontPath} \
+              ${typstFontPathArgs} \
               --no-pdf-tags \
               ${resumeFile} \
               ${outputFile}

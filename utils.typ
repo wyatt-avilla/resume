@@ -8,7 +8,7 @@
   v(separator-gap)
 }
 
-#let ext = text(size: 6.5pt, baseline: 1.5pt)[↗]
+#let ext = text(size: 6.5pt, baseline: -0.15em)[]
 
 #let section(title, body) = {
   v(section-top-gap)
