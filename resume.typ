@@ -6,13 +6,23 @@
 #set text(font: "TeX Gyre Heros", size: 8.55pt)
 #set par(leading: 0.22em, justify: false)
 
+#let separator-gap = -0.28em
+#let section-top-gap = -0.9em
+#let section-title-gap = -1em
+#let section-bottom-gap = -0.08em
+#let tight-line-gap = -0.8em
+#let bullet-item-gap = -0.67em
+#let entry-gap = -0.55em
+
 #let separator = {
   line(length: 100%, stroke: 0.55pt + rgb("#777777"))
-  v(-0.28em)
+  v(separator-gap)
 }
 #let ext = text(size: 6.5pt, baseline: 1.5pt)[↗]
 #let resume-header = align(center)[
+  #v(-2em)
   #text(size: 16.2pt, weight: "bold")[Wyatt Avilla] \
+  #v(-0.7em)
   #text(size: 9pt, fill: rgb("#444444"))[
     (408) 506-2189 | #link("mailto:wyatt@linux.com")[wyatt\@linux.com] |
     #link("https://github.com/wyatt-avilla")[github.com/wyatt-avilla #ext]
@@ -20,11 +30,11 @@
 ]
 
 #let section(title, body) = {
-  v(-0.9em)
+  v(section-top-gap)
   text(size: 10.9pt, weight: "bold")[#upper(title)]
-  v(-1em)
+  v(section-title-gap)
   body
-  v(-0.08em)
+  v(section-bottom-gap)
   separator
 }
 
@@ -40,7 +50,7 @@
     column-gutter: 0.25em,
     text(style: "italic")[#label:], body,
   )
-  v(-0.8em)
+  v(tight-line-gap)
 }
 
 #let bullet-list(items) = {
@@ -51,24 +61,24 @@
       column-gutter: 0.18em,
       align(top)[•], item,
     )
-    v(-0.67em)
+    v(bullet-item-gap)
   }
 }
 
 #let job(title, dates, company, items) = {
   row(text(size: 8.9pt, weight: "bold")[#title], dates)
-  v(-0.8em)
+  v(tight-line-gap)
   text(style: "italic")[#company]
-  v(-0.8em)
+  v(tight-line-gap)
   bullet-list(items)
   v(0em)
 }
 
 #let project(title, url, dates, body) = {
   row(text(size: 8.9pt, weight: "bold")[#link(url)[#title #ext]], dates)
-  v(-0.8em)
+  v(tight-line-gap)
   body
-  v(-0.55em)
+  v(entry-gap)
 }
 
 #resume-header
@@ -80,7 +90,7 @@
     text(size: 8.9pt, weight: "bold")[San José State University],
     text(style: "italic")[Aug 2025 - May 2027],
   )
-  #v(-0.8em)
+  #v(tight-line-gap)
   #row[
     #text(style: "italic")[Major:] M.S Software Engineering, specializing in networking software
   ][
@@ -89,7 +99,7 @@
       "https://github.com/wyatt-avilla/resume/blob/main/assets/sjsu_unofficial_transcript.pdf",
     )[ Transcript #ext]
   ]
-  #v(-0.8em)
+  #v(tight-line-gap)
   #skill-row(
     [Relevant Courses],
     [Database Systems, Operating System Design, Computer Network Design],
@@ -101,7 +111,7 @@
     text(size: 8.9pt, weight: "bold")[University of California, Santa Cruz],
     text(style: "italic")[Sept 2021 - June 2025],
   )
-  #v(-0.8em)
+  #v(tight-line-gap)
   #row[
     #text(style: "italic")[Major:] B.S. Cognitive Science, specializing in AI & HCI
   ][
@@ -110,9 +120,9 @@
       "https://github.com/wyatt-avilla/resume/blob/main/assets/ucsc_official_transcript.pdf",
     )[ Transcript #ext]
   ]
-  #v(-0.8em)
+  #v(tight-line-gap)
   #text(style: "italic")[Minor:] Computer Science
-  #v(-0.8em)
+  #v(tight-line-gap)
   #skill-row(
     [Relevant Courses],
     [
