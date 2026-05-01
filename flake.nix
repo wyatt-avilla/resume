@@ -1,5 +1,5 @@
 {
-  description = "LaTeX Resume Build Environment";
+  description = "Typst Resume Build Environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -17,15 +17,15 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        tex = pkgs.texlive.combine { inherit (pkgs.texlive) scheme-full; };
-
-        resumeFile = "resume.tex";
+        resumeFile = "resume.typ";
+        outputFile = "resume.pdf";
       in
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            tex
-            tex-fmt
+            typst
+            typstyle
+            tinymist
             pre-commit
           ];
 
@@ -41,18 +41,12 @@
 
           src = ./.;
 
-          buildInputs = with pkgs; [
-            tex
-            tex-fmt
-
-            self.checks.${system}.chktex
-            self.checks.${system}.tex-fmt
-          ];
+          nativeBuildInputs = with pkgs; [ typst ];
 
           buildPhase = ''
             runHook preBuild
 
-            pdflatex ${resumeFile}
+            typst compile --root . --no-pdf-tags ${resumeFile} ${outputFile}
 
             runHook postBuild
           '';
@@ -61,46 +55,31 @@
             runHook preInstall
 
             mkdir -p $out
-            cp *.pdf $out/
+            cp ${outputFile} $out/
 
             runHook postInstall
           '';
         };
 
         checks = {
-          chktex = pkgs.stdenv.mkDerivation {
-            pname = "chktex-check";
+          build = self.packages.${system}.default;
+
+          typstyle = pkgs.stdenv.mkDerivation {
+            pname = "typstyle-check";
             version = "0.1.0";
 
             src = ./.;
 
-            buildInputs = [ tex ];
+            nativeBuildInputs = with pkgs; [ typstyle ];
 
             buildPhase = ''
-              echo "Running chktek checks..."
-              ${pkgs.lib.getExe' pkgs.texlivePackages.chktex "chktex"} --nowarn 8 **.tex
+              echo "Running typstyle checks..."
+              typstyle --check ${resumeFile}
             '';
 
             installPhase = ''
               mkdir -p $out
-              echo "chktex checks passed" > $out/chktek-result
-            '';
-          };
-
-          tex-fmt = pkgs.stdenv.mkDerivation {
-            pname = "tex-fmt-check";
-            version = "0.1.0";
-
-            src = ./.;
-
-            buildPhase = ''
-              echo "Running tex-fmt checks..."
-              ${pkgs.lib.getExe pkgs.tex-fmt} --check **.tex **.cls
-            '';
-
-            installPhase = ''
-              mkdir -p $out
-              echo "tex-fmt checks passed" > $out/tex-fmt-result
+              echo "typstyle checks passed" > $out/typstyle-result
             '';
           };
         };
