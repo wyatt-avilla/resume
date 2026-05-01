@@ -20,9 +20,9 @@
 ]
 
 #let section(title, body) = {
-  v(0em)
+  v(-0.9em)
   text(size: 10.9pt, weight: "bold")[#upper(title)]
-  v(-0.12em)
+  v(-1em)
   body
   v(-0.08em)
   separator
