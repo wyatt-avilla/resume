@@ -13,6 +13,7 @@
 #let tight-line-gap = -0.8em
 #let bullet-item-gap = -0.67em
 #let entry-gap = -0.55em
+#let multiline-leading = 0.35em
 
 #let separator = {
   line(length: 100%, stroke: 0.55pt + rgb("#777777"))
@@ -27,6 +28,7 @@
     (408) 506-2189 | #link("mailto:wyatt@linux.com")[wyatt\@linux.com] |
     #link("https://github.com/wyatt-avilla")[github.com/wyatt-avilla #ext]
   ]
+  #v(-0.5em)
 ]
 
 #let section(title, body) = {
@@ -45,6 +47,7 @@
 )
 
 #let skill-row(label, body) = {
+  set par(leading: multiline-leading, justify: false)
   grid(
     columns: (auto, 1fr),
     column-gutter: 0.25em,
@@ -54,7 +57,7 @@
 }
 
 #let bullet-list(items) = {
-  set par(leading: 0.38em, justify: false)
+  set par(leading: multiline-leading, justify: false)
   for item in items {
     grid(
       columns: (0.7em, 1fr),
@@ -77,6 +80,7 @@
 #let project(title, url, dates, body) = {
   row(text(size: 8.9pt, weight: "bold")[#link(url)[#title #ext]], dates)
   v(tight-line-gap)
+  set par(leading: multiline-leading, justify: false)
   body
   v(entry-gap)
 }
