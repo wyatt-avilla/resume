@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  LaTeX:
+  Typst:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,10 +36,7 @@ jobs:
           purge-primary-key: never
       - name: Format
         run: |
-          nix build .#checks.x86_64-linux.tex-fmt
-      - name: Lint
-        run: |
-          nix build .#checks.x86_64-linux.chktex
+          nix build .#checks.x86_64-linux.typstyle
       - name: Build
         run: |
           nix build

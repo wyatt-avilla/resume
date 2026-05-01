@@ -2,10 +2,10 @@ repos:
   - repo: local
     hooks:
       - id: check-fmt
-        name: Run tex-fmt
-        entry: bash -c 'nix build .#checks.x86_64-linux.tex-fmt'
+        name: Run typstyle
+        entry: bash -c 'nix build .#checks.x86_64-linux.typstyle'
         language: system
-      - id: check-lint
-        name: Run Chktex
-        entry: bash -c 'nix build .#checks.x86_64-linux.chktex'
+      - id: check-build
+        name: Build resume
+        entry: bash -c 'nix build .#checks.x86_64-linux.build'
         language: system
