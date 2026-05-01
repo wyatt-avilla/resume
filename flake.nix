@@ -19,6 +19,16 @@
 
         resumeFile = "resume.typ";
         outputFile = "resume.pdf";
+        typstFontPath = "${pkgs.tex-gyre.heros}/share/fonts/opentype";
+        typstFiles = [
+          "resume.typ"
+          "spacing.typ"
+          "utils.typ"
+          "sections/education.typ"
+          "sections/skills.typ"
+          "sections/work-experience.typ"
+          "sections/projects.typ"
+        ];
       in
       {
         devShells.default = pkgs.mkShell {
@@ -27,9 +37,11 @@
             typstyle
             tinymist
             pre-commit
+            tex-gyre.heros
           ];
 
           shellHook = ''
+            export TYPST_FONT_PATHS="${typstFontPath}''${TYPST_FONT_PATHS:+:''${TYPST_FONT_PATHS}}"
             pre-commit install
           '';
         };
@@ -41,12 +53,20 @@
 
           src = ./.;
 
-          nativeBuildInputs = with pkgs; [ typst ];
+          nativeBuildInputs = with pkgs; [
+            typst
+            tex-gyre.heros
+          ];
 
           buildPhase = ''
             runHook preBuild
 
-            typst compile --root . --no-pdf-tags ${resumeFile} ${outputFile}
+            typst compile \
+              --root . \
+              --font-path ${typstFontPath} \
+              --no-pdf-tags \
+              ${resumeFile} \
+              ${outputFile}
 
             runHook postBuild
           '';
@@ -74,7 +94,7 @@
 
             buildPhase = ''
               echo "Running typstyle checks..."
-              typstyle --check ${resumeFile}
+              typstyle --check ${builtins.concatStringsSep " " typstFiles}
             '';
 
             installPhase = ''
