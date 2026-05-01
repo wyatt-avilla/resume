@@ -1,26 +1,31 @@
 #set document(author: "Wyatt Avilla", title: "Resume")
 #set page(
   paper: "us-letter",
-  margin: (left: 0.65in, top: 0.38in, right: 0.65in, bottom: 0.4in),
+  margin: (left: 0.62in, top: 0.38in, right: 0.62in, bottom: 0.34in),
 )
-#set text(size: 9.2pt)
-#set par(leading: 0.22em)
+#set text(font: "TeX Gyre Heros", size: 8.55pt)
+#set par(leading: 0.22em, justify: false)
 
-#let ext = text(size: 7pt, baseline: 1.5pt)[↗]
+#let separator = {
+  line(length: 100%, stroke: 0.55pt + rgb("#777777"))
+  v(-0.28em)
+}
+#let ext = text(size: 6.5pt, baseline: 1.5pt)[↗]
 #let resume-header = align(center)[
-  #text(size: 14pt, weight: "bold")[WYATT AVILLA] \
-  (408)506-2189 ♦
-  #link("mailto:wyatt@linux.com")[wyatt\@linux.com] ♦
-  #link("https://github.com/wyatt-avilla")[github.com/wyatt-avilla #ext]
+  #text(size: 16.2pt, weight: "bold")[Wyatt Avilla] \
+  #text(size: 9pt, fill: rgb("#444444"))[
+    (408) 506-2189 | #link("mailto:wyatt@linux.com")[wyatt\@linux.com] |
+    #link("https://github.com/wyatt-avilla")[github.com/wyatt-avilla #ext]
+  ]
 ]
 
 #let section(title, body) = {
-  v(0.24em)
-  text(weight: "bold")[#upper(title)]
-  v(0.02em)
-  line(length: 100%, stroke: 0.5pt)
-  v(0.02em)
-  pad(left: 1.5em, body)
+  v(0em)
+  text(size: 10.9pt, weight: "bold")[#upper(title)]
+  v(-0.12em)
+  body
+  v(-0.08em)
+  separator
 }
 
 #let row(left, side) = grid(
@@ -30,38 +35,44 @@
 )
 
 #let skill-row(label, body) = grid(
-  columns: (13em, 1fr),
-  column-gutter: 1.4em,
-  text(weight: "bold")[#label], body,
+  columns: (auto, 1fr),
+  column-gutter: 0.25em,
+  text(weight: "bold")[#label:], body,
 )
 
-#let bullet-list(items) = list(
-  marker: [#sym.dot.op],
-  indent: 0pt,
-  body-indent: 0.8em,
-  spacing: 0em,
-  ..items,
-)
+#let bullet-list(items) = {
+  set par(leading: 0.34em, justify: false)
+  for item in items {
+    grid(
+      columns: (0.7em, 1fr),
+      column-gutter: 0.18em,
+      align(top)[•], item,
+    )
+    v(-0.11em)
+  }
+}
 
 #let job(title, dates, company, items) = {
-  row(text(weight: "bold")[#title], dates)
+  row(text(size: 8.9pt, weight: "bold")[#title], dates)
   text(style: "italic")[#company]
-  v(0.02em)
+  v(-0.04em)
   bullet-list(items)
-  v(0.15em)
+  v(0em)
 }
 
 #let project(title, url, dates, body) = {
-  row(text(weight: "bold")[#link(url)[#title #ext]], dates)
+  row(text(size: 8.9pt, weight: "bold")[#link(url)[#title #ext]], dates)
   body
-  v(0.16em)
+  v(0.08em)
 }
 
 #resume-header
+#v(0.04em)
+#separator
 
 #section("Education")[
   #row(
-    text(weight: "bold")[San José State University],
+    text(size: 8.9pt, weight: "bold")[San José State University],
     text(style: "italic")[Aug 2025 - May 2027],
   )
   #row[
@@ -77,10 +88,10 @@
     [Database Systems, Operating System Design, Computer Network Design],
   )
 
-  #v(0.24em)
+  #v(0.06em)
 
   #row(
-    text(weight: "bold")[University of California, Santa Cruz],
+    text(size: 8.9pt, weight: "bold")[University of California, Santa Cruz],
     text(style: "italic")[Sept 2021 - June 2025],
   )
   #row[
@@ -101,7 +112,7 @@
   )
 ]
 
-#section("Technical Strengths")[
+#section("Skills")[
   #skill-row(
     [Programming Languages],
     [Python, C, Rust, C++, Shell, Nix, Lua, SQL],
