@@ -41,14 +41,14 @@
 )
 
 #let bullet-list(items) = {
-  set par(leading: 0.34em, justify: false)
+  set par(leading: 0.38em, justify: false)
   for item in items {
     grid(
       columns: (0.7em, 1fr),
       column-gutter: 0.18em,
       align(top)[•], item,
     )
-    v(-0.11em)
+    v(-0.67em)
   }
 }
 
