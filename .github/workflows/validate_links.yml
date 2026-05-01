@@ -28,8 +28,8 @@ jobs:
 
           import requests
 
-          LINK_REGEX = r"\\(?:href|url)\{(https?://[^\}]+\.[^\}]+)\}"
-          FILE_EXTENSIONS = [".tex"]
+          LINK_REGEX = r"https?://[^\"]+"
+          FILE_EXTENSIONS = [".typ"]
           REQUEST_TIMEOUT = 10
 
           if __name__ == "__main__":
