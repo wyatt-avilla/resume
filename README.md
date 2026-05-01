@@ -4,12 +4,12 @@
 
 View the generated PDF [here](./resume.pdf).
 
-Builds, development environment, and CI provided by this
+Builds, development environment, and CI are provided by this
 [Nix Flake](./flake.nix). All links are validated with GitHub actions.
 
 ## Local Development
 
-Access the necessary linters, formatters, and LaTeX engine with:
+Access the necessary formatter, language server, and Typst compiler with:
 
 ```sh
 nix develop
