@@ -49,11 +49,15 @@ jobs:
                   for link in links
               ]
 
-              ok = http.HTTPStatus.OK
+              valid_statuses = [
+                  http.HTTPStatus.OK,
+                  999, # linkedin :(
+              ]
+
               print("Statuses:")
               for link, status in responses:
-                  print(f"  {'✅' if status == ok else '❌'} {link}")
+                  print(f"  {'✅' if status in valid_statuses else '❌'} {link}")
 
-              sys.exit(1 if any(status != ok for _, status in responses) else 0)
+              sys.exit(1 if any(status not in valid_statuses for _, status in responses) else 0)
 
         shell: python
