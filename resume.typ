@@ -40,7 +40,7 @@
     column-gutter: 0.25em,
     text(style: "italic")[#label:], body,
   )
-  v(-0.55em)
+  v(-0.8em)
 }
 
 #let bullet-list(items) = {
