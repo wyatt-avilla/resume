@@ -1,4 +1,4 @@
-#import "../spacing.typ": bullet-item-gap, multiline-leading, tight-line-gap
+#import "../spacing.typ": multiline-leading, tight-line-gap
 #import "../utils.typ": row, section
 
 #let bullet-list(items) = {
@@ -9,7 +9,7 @@
       column-gutter: 0.18em,
       align(top)[•], item,
     )
-    v(bullet-item-gap)
+    v(tight-line-gap)
   }
 }
 

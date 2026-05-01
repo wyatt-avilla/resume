@@ -3,6 +3,5 @@
 #let section-title-gap = -1em
 #let section-bottom-gap = -0.08em
 #let tight-line-gap = -0.8em
-#let bullet-item-gap = -0.67em
 #let entry-gap = -0.55em
 #let multiline-leading = 0.35em
