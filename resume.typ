@@ -34,11 +34,14 @@
   left, align(right)[#side],
 )
 
-#let skill-row(label, body) = grid(
-  columns: (auto, 1fr),
-  column-gutter: 0.25em,
-  text(weight: "bold")[#label:], body,
-)
+#let skill-row(label, body) = {
+  grid(
+    columns: (auto, 1fr),
+    column-gutter: 0.25em,
+    text(style: "italic")[#label:], body,
+  )
+  v(-0.55em)
+}
 
 #let bullet-list(items) = {
   set par(leading: 0.38em, justify: false)
@@ -77,6 +80,7 @@
     text(size: 8.9pt, weight: "bold")[San José State University],
     text(style: "italic")[Aug 2025 - May 2027],
   )
+  #v(-0.8em)
   #row[
     #text(style: "italic")[Major:] M.S Software Engineering, specializing in networking software
   ][
@@ -85,17 +89,19 @@
       "https://github.com/wyatt-avilla/resume/blob/main/assets/sjsu_unofficial_transcript.pdf",
     )[ Transcript #ext]
   ]
+  #v(-0.8em)
   #skill-row(
     [Relevant Courses],
     [Database Systems, Operating System Design, Computer Network Design],
   )
 
-  #v(0.06em)
+  #v(0em)
 
   #row(
     text(size: 8.9pt, weight: "bold")[University of California, Santa Cruz],
     text(style: "italic")[Sept 2021 - June 2025],
   )
+  #v(-0.8em)
   #row[
     #text(style: "italic")[Major:] B.S. Cognitive Science, specializing in AI & HCI
   ][
@@ -104,7 +110,9 @@
       "https://github.com/wyatt-avilla/resume/blob/main/assets/ucsc_official_transcript.pdf",
     )[ Transcript #ext]
   ]
+  #v(-0.8em)
   #text(style: "italic")[Minor:] Computer Science
+  #v(-0.8em)
   #skill-row(
     [Relevant Courses],
     [
