@@ -14,7 +14,9 @@
   #v(-0.7em)
   #text(size: 9pt, fill: rgb("#444444"))[
     (408) 506-2189 | #link("mailto:wyatt@linux.com")[wyatt\@linux.com] |
-    #link("https://github.com/wyatt-avilla")[github.com/wyatt-avilla #ext]
+    #link("https://github.com/wyatt-avilla")[github.com/wyatt-avilla] |
+    #link("https://www.linkedin.com/in/wyatt-avilla/")[linkedin.com/in/wyatt-avilla] |
+    #link("https://www.wyattavilla.dev")[wyattavilla.dev]
   ]
   #v(-0.5em)
 ]
