@@ -54,16 +54,18 @@
 
 #let job(title, dates, company, items) = {
   row(text(size: 8.9pt, weight: "bold")[#title], dates)
+  v(-0.8em)
   text(style: "italic")[#company]
-  v(-0.04em)
+  v(-0.8em)
   bullet-list(items)
   v(0em)
 }
 
 #let project(title, url, dates, body) = {
   row(text(size: 8.9pt, weight: "bold")[#link(url)[#title #ext]], dates)
+  v(-0.8em)
   body
-  v(0.08em)
+  v(-0.55em)
 }
 
 #resume-header
