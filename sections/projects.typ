@@ -5,7 +5,7 @@
     [Circuit Breaker Labs CLI],
     "https://github.com/circuitbreakerlabs/cli",
     [January 2026 - Present],
-    [Built and shipped cbl, the public Rust CLI for Circuit Breaker Labs' AI safety evaluation platform, connecting to a deployed FastAPI service over WebSockets with typed protocol envelopes, API-key authentication, and version negotiation. Drove evaluations through an async engine built on `tokio::select!` and `JoinSet`, with model providers abstracted behind a shared trait supporting OpenAI, Ollama, and Rhai-scripted custom integrations. Shipped Ratatui inline progress displays, 79 unit and integration tests, and cargo-dist releases targeting Apple Silicon, Intel macOS, Linux musl, and Windows MSVC.],
+    [Built and shipped `cbl`, the public Rust CLI for Circuit Breaker Labs' AI safety evaluation platform, connecting to a deployed FastAPI service over WebSockets with typed protocol envelopes, API-key authentication, and version negotiation. Drove evaluations through an async engine built on `tokio::select!` and `JoinSet`, with model providers abstracted behind a shared trait supporting OpenAI, Ollama, and Rhai-scripted custom integrations. Shipped Ratatui inline progress displays, 79 unit and integration tests, and cargo-dist releases targeting Apple Silicon, Intel macOS, Linux musl, and Windows MSVC.],
   )
 
   #project(

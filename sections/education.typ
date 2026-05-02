@@ -20,7 +20,7 @@
   #v(tight-line-gap)
   #italic-title-hanging-row(
     [Relevant Courses],
-    [Database Systems, Operating System Design, Computer Network Design],
+    [Database Systems, Operating System Design, Computer Network Design, Software Systems Engineering, Enterprise Software Platforms],
   )
 
   #v(0em)
