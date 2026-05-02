@@ -1,0 +1,59 @@
+name: Update Generated PDF
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  update-generated-pdf:
+    name: Update generated PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build resume
+        id: build
+        run: |
+          out_path="$(
+            nix build --print-build-logs --no-link --print-out-paths .#
+          )"
+          echo "out_path=$out_path" >> "$GITHUB_OUTPUT"
+
+      - name: Update committed PDF
+        run: |
+          cp "${{ steps.build.outputs.out_path }}/resume.pdf" resume.pdf
+
+      - name: Commit updated PDF
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          if git diff --quiet origin/main -- resume.pdf; then
+            echo "Generated PDF matches main."
+            exit 0
+          fi
+
+          git add resume.pdf
+          git commit -m "Update generated resume PDF"
+          git push
