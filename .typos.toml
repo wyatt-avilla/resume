@@ -1,0 +1,8 @@
+[files]
+extend-exclude = ["assets/**/*.pdf"]
+
+[default.extend-words]
+heros = "heros"
+Heros = "Heros"
+ratatui = "ratatui"
+Ratatui = "Ratatui"

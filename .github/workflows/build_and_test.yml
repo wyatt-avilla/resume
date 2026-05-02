@@ -25,8 +25,7 @@ jobs:
       - name: Restore and save Nix store
         uses: nix-community/cache-nix-action@v6
         with:
-          primary-key:
-            nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
+          primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
           restore-prefixes-first-match: nix-${{ runner.os }}-
           gc-max-store-size-linux: 1G
           purge: true
@@ -40,6 +39,9 @@ jobs:
       - name: Build
         run: |
           nix build
+      - name: Spellcheck
+        run: |
+          nix build .#checks.x86_64-linux.spell
       - name: Ensure committed resume matches build output
         run: |
           if ! diff -q resume.pdf result/resume.pdf >/dev/null; then

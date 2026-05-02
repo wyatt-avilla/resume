@@ -9,3 +9,7 @@ repos:
         name: Build resume
         entry: bash -c 'nix build .#checks.x86_64-linux.build'
         language: system
+      - id: check-spelling
+        name: Check spelling
+        entry: bash -c 'nix build .#checks.x86_64-linux.spell'
+        language: system

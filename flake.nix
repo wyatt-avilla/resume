@@ -113,6 +113,40 @@
               echo "typstyle checks passed" > $out/typstyle-result
             '';
           };
+
+          spell = pkgs.stdenv.mkDerivation {
+            pname = "spell-check";
+            version = "0.1.0";
+
+            src = ./.;
+
+            nativeBuildInputs = with pkgs; [
+              typos
+              codespell
+            ];
+
+            buildPhase = ''
+              cat > typos.toml <<'EOF'
+              [files]
+              extend-exclude = ["assets/**/*.pdf"]
+
+              [default.extend-words]
+              heros = "heros"
+              Heros = "Heros"
+              ratatui = "ratatui"
+              Ratatui = "Ratatui"
+              EOF
+
+              echo "Running spell checks..."
+              codespell ${self} -S '*.pdf' -L heros,Heros,ratatui,Ratatui
+              typos --config typos.toml ${self}
+            '';
+
+            installPhase = ''
+              mkdir -p $out
+              echo "spell checks passed" > $out/spell-result
+            '';
+          };
         };
       }
     );
