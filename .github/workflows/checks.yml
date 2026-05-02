@@ -1,0 +1,68 @@
+name: Checks
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  enumerate-checks:
+    name: Enumerate checks
+    runs-on: ubuntu-latest
+
+    outputs:
+      checks: ${{ steps.checks.outputs.checks }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enumerate check outputs
+        id: checks
+        run: |
+          checks="$(nix eval --json '.#checks.x86_64-linux' --apply builtins.attrNames)"
+          echo "checks=$checks" >> "$GITHUB_OUTPUT"
+
+  check:
+    name: Run ${{ matrix.check }}
+    needs: enumerate-checks
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        check: ${{ fromJSON(needs.enumerate-checks.outputs.checks) }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run check
+        env:
+          CHECK: ${{ matrix.check }}
+        run: |
+          nix build --print-build-logs --no-link \
+            ".#checks.x86_64-linux.${CHECK}"
