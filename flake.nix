@@ -73,6 +73,8 @@
             typst compile \
               --root . \
               ${typstFontPathArgs} \
+              --ignore-system-fonts \
+              --creation-timestamp 315532800 \
               --no-pdf-tags \
               ${resumeFile} \
               ${outputFile}
