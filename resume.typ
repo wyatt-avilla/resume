@@ -1,7 +1,7 @@
 #set document(author: "Wyatt Avilla", title: "Resume")
 #set page(
   paper: "us-letter",
-  margin: (left: 0.62in, top: 0.38in, right: 0.62in, bottom: 0.34in),
+  margin: (left: 0.5in, top: 0.38in, right: 0.5in, bottom: 0.34in),
 )
 #set text(font: "TeX Gyre Heros", size: 8.55pt)
 #set par(leading: 0.22em, justify: false)

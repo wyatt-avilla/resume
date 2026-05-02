@@ -7,7 +7,7 @@
   )
   #italic-title-hanging-row(
     [Backend & APIs],
-    [FastAPI, Axum, WebSockets, REST, SQLAlchemy, Alembic, Pydantic, asyncio, asyncpg, Uvicorn, Tokio],
+    [FastAPI, Axum, WebSockets, REST, SQLAlchemy, Alembic, Pydantic, asyncio, asyncpg, Uvicorn, Tokio, Redis],
   )
   #italic-title-hanging-row(
     [Databases],
@@ -19,10 +19,10 @@
   )
   #italic-title-hanging-row(
     [Infrastructure & DevOps],
-    [NixOS, Nix Flakes, systemd, nginx, Docker, GitHub Actions, Prometheus, CI/CD],
+    [NixOS, Nix Flakes, systemd, nginx, Docker, GitHub Actions, Terraform, CI/CD, CDK, AWS (EC2, ECR, S3)],
   )
   #italic-title-hanging-row(
     [Concepts],
-    [Concurrency, Async Programming, WebSocket Protocols, Distributed Systems, Networking, IoT, Embedded Systems],
+    [Concurrency, Multithreading, Async Programming, WebSocket Protocols, Distributed Systems, Networking, IoT, Embedded Systems],
   )
 ]
