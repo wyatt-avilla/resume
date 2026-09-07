@@ -3,26 +3,18 @@
 #let skills() = section("Skills")[
   #italic-title-hanging-row(
     [Programming Languages],
-    [Python, Rust, C, C++, SQL, Nix, Lua, Shell],
+    [Python, Rust, TypeScript, SQL, C, C++, Nix, Shell],
   )
   #italic-title-hanging-row(
-    [Backend & APIs],
-    [FastAPI, Axum, WebSockets, REST, SQLAlchemy, Alembic, Pydantic, asyncio, asyncpg, Uvicorn, Tokio, Redis],
+    [Backend & Data],
+    [FastAPI, REST, WebSockets, PostgreSQL, SQLAlchemy, Alembic, Tokio, Redis],
   )
   #italic-title-hanging-row(
-    [Databases],
-    [PostgreSQL, SQLite, InfluxDB, MongoDB, MariaDB, MySQL],
+    [Cloud & Platform],
+    [Kubernetes, Helm, Kyverno, AWS CDK, Lambda, API Gateway, DynamoDB, SNS, CloudFront, NixOS, Docker],
   )
   #italic-title-hanging-row(
-    [AI & ML],
-    [LangChain, LLM Evaluation, Hugging Face, OpenAI API, Ollama, Tool Calling],
-  )
-  #italic-title-hanging-row(
-    [Infrastructure & DevOps],
-    [NixOS, Nix Flakes, systemd, nginx, Docker, GitHub Actions, Terraform, CI/CD, CDK, AWS (EC2, ECR, S3)],
-  )
-  #italic-title-hanging-row(
-    [Concepts],
-    [Concurrency, Multithreading, Async Programming, WebSocket Protocols, Distributed Systems, Networking, IoT, Embedded Systems],
+    [Tooling & Systems],
+    [GitHub Actions, CI/CD, Linux, systemd, nginx, Prometheus, Concurrency, Networking],
   )
 ]

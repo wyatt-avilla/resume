@@ -30,12 +30,28 @@
     (
       [Built Circuit Breaker Labs' FastAPI evaluation platform for AI safety red-teaming, owning typed REST and WebSocket endpoints for single-turn and multi-turn LLM evaluation workflows],
       [Designed WebSocket evaluation flows with typed protocol envelopes, protocol-version validation, progress notifications, completion-request routing, and close-code error mapping, with database-backed API key authentication and monthly quota enforcement shared across REST and WebSocket handlers],
-      [Implemented model-provider call tracking across OpenAI, OpenRouter, and WebSocket client providers, capturing prompt contents, token counts, and errors to power precise API expenditure calculation and link generated tests and evaluated responses back to underlying model calls],
+      [Implemented model-provider call tracking across OpenAI, OpenRouter, and WebSocket client providers, recording prompts, token counts, and errors to calculate API expenditure and preserve evaluation provenance],
       [Designed and migrated PostgreSQL schemas for users, API keys, test cases, generation records, test results, provider-call logs, and quotas using SQLAlchemy async and Alembic],
       [Packaged and deployed the API with Nix flakes, uv2nix, a NixOS service module, systemd, PostgreSQL, agenix-managed secrets, nginx TLS/WebSocket proxying, and Prometheus/Alertmanager alerting, reducing build size from 17GB to 1GB and build time from 5+ hours to under a minute by removing CUDA dependencies and pinning Nix inputs],
-      [Refactored evaluation and provider functions to errors-as-values, enabling per-test-case error reporting, and debugged production-only request hanging caused by HTTP client timeout and resource-leak issues only surfacing after extended server uptime],
-      [Established CI/CD across Python and Nix codebases with GitHub Actions workflows for Ruff, strict Mypy, pytest coverage and Nix builds],
-      [Built the public Rust `cbl` CLI client for the evaluation platform, implementing async WebSocket orchestration, multi-provider abstraction, and cross-platform release automation (see Projects)],
+      [Refactored evaluation and provider functions to errors-as-values for per-test-case failures and diagnosed production request hangs caused by HTTP client timeouts and leaked resources after extended uptime],
+      [Established CI/CD across Python and Nix codebases with GitHub Actions workflows for Ruff, strict Mypy, pytest coverage, and Nix builds],
+    ),
+  )
+
+  #job(
+    [Software Engineer Intern],
+    [May 2026 - Aug 2026],
+    [Principal Financial Group],
+    (
+      [Extended TypeScript Helm chart-sync automation into a general transformation subsystem that parsed upstream charts, rendered templates, and patched every container definition to drop `CAP_SYS_ADMIN`],
+      [Iteratively deployed transformed charts and triaged live Kyverno admission-controller policy reports, bringing all 51 development Kubernetes resources into compliance],
+      [Authored and reviewed a 6,000+-line downstream pull request demonstrating the maintenance cost of injecting the security patch, then recommended that upstream chart maintainers implement the production fix],
+      [Shipped chart-sync automation that created a Jira ticket for every generated pull request and cross-linked the two records, closing a manual release-tracking gap],
+      [Owned AWS infrastructure for a five-person finalist intern hackathon team, provisioning API Gateway, Lambda, Bedrock, and DynamoDB with CDK for a context-aware prompt-refinement VS Code extension],
+      [Built CI checks for testing, linting, formatting, and infrastructure validation for the completed extension, which was prepared for Visual Studio Marketplace publication],
+      [Deployed CDK-managed SNS alerting for production CloudFront errors at a three-event/5-minute threshold and migrated two CDK applications to the enterprise pipeline while replacing deprecated GitHub Actions steps],
+      [Diagnosed GitHub deployment failures to a repository merge-strategy misconfiguration, corrected it, and validated the fix across two core repositories],
+      [Integrated a session-analytics platform into a Next.js-based internal sandbox to validate customer-site tracking and performed QA on the team's no-code A/B testing platform],
     ),
   )
 
@@ -44,20 +60,9 @@
     [Sept 2024 - Dec 2024],
     [Lillup],
     (
-      [Built a FastAPI backend with LangChain integration for LLM tool calling, enabling the model to dynamically query user data through a RESTful endpoint that processed multi-turn conversations with tool execution],
-      [Designed and implemented custom tool definitions with automated response parsing, handling JSON deserialization of LLM outputs into function arguments and returning structured responses],
-      [Extended Markdown syntax using markdown-it-py and regex parsing to support structured metadata (tags, progress indicators, due dates) for improved LLM context in time-sensitive applications],
-      [Established code quality standards with static typing (Mypy), Ruff for formatting/linting, and automated CI/CD pipeline through GitHub Actions],
-    ),
-  )
-
-  #job(
-    [Programming Course Developer & Tutor],
-    [July 2024 - June 2025],
-    [University of California, Santa Cruz],
-    (
-      [Independently migrated 4 programming assignments and 12 assessments (∼2,000 lines) from C++ to Python, ensuring 100% test compatibility across 1,600+ test cases while implementing modern Python idioms including static typing, generics, comprehensions, and lazy evaluation],
-      [Led group tutoring sessions for data structures and algorithms, focusing on problem-solving strategies for technical interview preparation],
+      [Prototyped a stateless FastAPI backend integrating LangChain with a self-hosted Llama model, designing approximately 10 tools with typed JSON parsing for multi-turn interaction with structured user-profile data],
+      [Extended Markdown parsing with markdown-it-py and regex to encode tags, progress indicators, and due dates as structured LLM],
+      [Established backend quality gates with GitHub Actions, pytest, Mypy, and Ruff for a proof-of-concept delivered to company leadership],
     ),
   )
 ]
