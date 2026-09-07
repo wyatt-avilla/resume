@@ -43,6 +43,9 @@
   #v(tight-line-gap)
   #italic-title-hanging-row(
     [Relevant Courses],
-    [Data Structures & Algorithms, Parallel Programming, Computer System Design],
+    [
+      Data Structures & Algorithms, Object Oriented Programming, Parallel Programming,
+      Computer System Design, Artificial Intelligence
+    ],
   )
 ]

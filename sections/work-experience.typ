@@ -61,7 +61,7 @@
     [Lillup],
     (
       [Prototyped a stateless FastAPI backend integrating LangChain with a self-hosted Llama model, designing approximately 10 tools with typed JSON parsing for multi-turn interaction with structured user-profile data],
-      [Extended Markdown parsing with markdown-it-py and regex to encode tags, progress indicators, and due dates as structured context for the LLM],
+      [Extended Markdown parsing with markdown-it-py and regex to encode tags, progress indicators, and due dates as structured LLM],
       [Established backend quality gates with GitHub Actions, pytest, Mypy, and Ruff for a proof-of-concept delivered to company leadership],
     ),
   )
