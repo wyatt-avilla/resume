@@ -14,7 +14,7 @@
           weight: "bold",
           tracking: 0.08em,
           fill: rgb("#555555"),
-        )[THIS RÉSUMÉ IS CI-BUILT AND VERSION-CONTROLLED]
+        )[THIS RÉSUMÉ IS BUILT WITH CI AND VERSION-CONTROLLED]
       ]
     ]
   ],
