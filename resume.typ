@@ -1,12 +1,31 @@
 #set document(author: "Wyatt Avilla", title: "Resume")
+
+#import "utils.typ": ext, separator
+
 #set page(
   paper: "us-letter",
   margin: (left: 0.5in, top: 0.38in, right: 0.5in, bottom: 0.34in),
+  footer: align(right)[
+    #link("https://github.com/wyatt-avilla/resume")[
+      #box(
+        inset: (x: 4pt, y: 1.5pt),
+        radius: 2pt,
+        stroke: 0.4pt + rgb("#aaaaaa"),
+      )[
+        #text(
+          size: 5.2pt,
+          weight: "bold",
+          tracking: 0.08em,
+          fill: rgb("#555555"),
+        )[THIS RÉSUMÉ IS BUILT WITH CI AND VERSION-CONTROLLED]
+      ]
+      #h(2pt)
+      #box[#move(dy: -0.8pt)[#ext]]
+    ]
+  ],
 )
 #set text(font: "TeX Gyre Heros", size: 8.55pt)
 #set par(leading: 0.22em, justify: false)
-
-#import "utils.typ": ext, separator
 
 #let resume-header = align(center)[
   #v(-2em)
