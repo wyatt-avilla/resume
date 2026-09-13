@@ -24,7 +24,7 @@
 
 #let work-experience() = section("Work Experience")[
   #job(
-    [Member of the Technical Staff],
+    [Member of Technical Staff],
     [Oct 2025 - Present],
     [Circuit Breaker Labs],
     (
