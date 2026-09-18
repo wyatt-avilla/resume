@@ -12,7 +12,7 @@
   #row[
     #text(style: "italic")[Major:] M.S Software Engineering, specializing in networking software
   ][
-    #text(weight: "bold")[CGPA: 4.0]
+    #text(weight: "bold")[GPA: 4.0]
     #link(
       "https://github.com/wyatt-avilla/resume/blob/main/assets/sjsu_unofficial_transcript.pdf",
     )[ Transcript #ext]
@@ -33,7 +33,7 @@
   #row[
     #text(style: "italic")[Major:] B.S. Cognitive Science, specializing in AI & HCI
   ][
-    #text(weight: "bold")[CGPA: 3.9]
+    #text(weight: "bold")[GPA: 3.9]
     #link(
       "https://github.com/wyatt-avilla/resume/blob/main/assets/ucsc_official_transcript.pdf",
     )[ Transcript #ext]
